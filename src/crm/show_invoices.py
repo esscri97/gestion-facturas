@@ -1,6 +1,16 @@
 from src.crm.db import connect
 
 def get_invoices_by_email(email):
+    """
+    Recupera todas las facturas asociadas al usuario identificado por su email.
+
+    Parámetros:
+    email (str): El correo electrónico del usuario cuyas facturas se desean obtener.
+
+    Retorna:
+    list: Una lista de tuplas con los datos de las facturas (id, fecha de emisión, descripción, monto, estado, nombre, apellidos).
+          Retorna una lista vacía en caso de error o si no se encuentran facturas.
+    """
     try:
         conn = connect()
         cursor = conn.cursor()
@@ -23,6 +33,11 @@ def get_invoices_by_email(email):
 
 
 def show_user_invoices():
+    """
+    Solicita al usuario un email, recupera las facturas asociadas y muestra por consola
+    un resumen detallado incluyendo número, fecha, descripción, monto, estado, total de facturas,
+    monto total facturado y monto pendiente.
+    """
     print("\n=== FACTURAS POR USUARIO ===")
     email = input("Ingrese email del usuario: ").strip()
 

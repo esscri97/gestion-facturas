@@ -7,6 +7,19 @@ ESTADOS = {
 }
 
 def create_invoice():
+    """
+    Crea una factura asociada a un usuario existente, solicitando los datos por consola.
+    
+    Validaciones:
+    - El email debe existir en la base de datos.
+    - La descripción no puede estar vacía.
+    - El monto debe ser un número mayor a cero.
+    - El estado debe ser una de las opciones válidas.
+
+    Conexión a base de datos:
+    - La conexión se mantiene abierta mientras el usuario introduce un email válido.
+    - Se cierra correctamente al finalizar el proceso o en caso de error.
+    """
     print("\n=== CREAR FACTURA ===")
     conn = connect()
     cursor = conn.cursor()
@@ -17,7 +30,6 @@ def create_invoice():
         if email == "7":
             conn.close()
             return
-        # Verificamos si el usuario existe
         cursor.execute("SELECT id_usuario, nombre, apellidos FROM usuarios WHERE email = ?", (email,))
         usuario = cursor.fetchone()
 

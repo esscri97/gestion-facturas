@@ -12,11 +12,11 @@ def start_db():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS usuarios (
             id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            apellidos TEXT NOT NULL,
-            email TEXT NOT NULL UNIQUE,
-            telefono TEXT,
-            direccion TEXT,
+            nombre VARCHAR(50) NOT NULL,
+            apellidos VARCHAR(100) NOT NULL,
+            email VARCHAR(100) NOT NULL UNIQUE,
+            telefono VARCHAR(15),
+            direccion VARCHAR(255),
             fecha_registro DATE DEFAULT (DATE('now'))
         );
     """)
@@ -26,9 +26,9 @@ def start_db():
             id_factura INTEGER PRIMARY KEY AUTOINCREMENT,
             id_usuario INTEGER NOT NULL,
             fecha_emision DATE DEFAULT (DATE('now')),
-            descripcion TEXT NOT NULL,
+            descripcion VARCHAR(255) NOT NULL,
             monto REAL NOT NULL CHECK (monto > 0),
-            estado TEXT CHECK (estado IN ('Pendiente', 'Pagada', 'Cancelada')) NOT NULL,
+            estado VARCHAR(10) CHECK (estado IN ('Pendiente', 'Pagada', 'Cancelada')) NOT NULL,
             FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
         );
     """)

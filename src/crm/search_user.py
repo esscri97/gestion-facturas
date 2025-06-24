@@ -1,6 +1,16 @@
 from src.crm.db import connect
 
 def search_user_email(email):
+    """
+    Busca un usuario en la base de datos por su email.
+
+    Parámetros:
+    email (str): El correo electrónico del usuario a buscar.
+
+    Retorna:
+    tuple o None: Una tupla con los datos del usuario si se encuentra, 
+                  o None si no existe ningún usuario con ese email.
+    """
     conn = connect()
     cursor = conn.cursor()
 
@@ -12,6 +22,16 @@ def search_user_email(email):
 
 
 def search_user_name(nombre):
+    """
+    Busca usuarios en la base de datos cuyo nombre contenga la cadena dada.
+
+    Parámetros:
+    nombre (str): La cadena para buscar en el nombre del usuario (búsqueda parcial).
+
+    Retorna:
+    list: Una lista de tuplas con los datos de los usuarios que coincidan, 
+          o una lista vacía si no hay coincidencias.
+    """
     conn = connect()
     cursor = conn.cursor()
 
@@ -23,6 +43,12 @@ def search_user_name(nombre):
 
 
 def show_user(usuario):
+    """
+    Muestra por consola los datos de un usuario.
+
+    Parámetros:
+    usuario (tuple o None): Los datos del usuario en forma de tupla, o None si no se encontró.
+    """
     if usuario:
         print("\n--- USUARIO ENCONTRADO ---")
         print(f"ID: USR00{usuario[0]}")

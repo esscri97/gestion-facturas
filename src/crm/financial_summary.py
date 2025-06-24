@@ -1,6 +1,16 @@
 from src.crm.db import connect
 
 def get_users():
+    """
+    Recupera una lista básica de usuarios desde la base de datos.
+
+    Acciones:
+    - Consulta los usuarios y obtiene su id, nombre, apellidos y email.
+    - Cierra la conexión a la base de datos.
+
+    Retorna:
+    - list de tuplas con la información básica de cada usuario (id_usuario, nombre, apellidos, email).
+    """
     conn = connect()
     cursor = conn.cursor()
 
@@ -12,6 +22,24 @@ def get_users():
 
 
 def get_user_invoice_summary(user_id):
+    """
+    Obtiene el resumen financiero de facturas de un usuario específico.
+
+    Parámetros:
+    - user_id (int): Identificador único del usuario.
+
+    Acciones:
+    - Consulta las facturas asociadas a ese usuario.
+    - Calcula el total de facturas, el monto total facturado, la suma de facturas pagadas y la suma de facturas pendientes.
+    - Cierra la conexión a la base de datos.
+
+    Retorna:
+    - dict con las claves:
+      * "total": número total de facturas.
+      * "total_amount": suma total de todos los montos.
+      * "paid": suma de montos de facturas pagadas.
+      * "pending": suma de montos de facturas pendientes.
+    """
     conn = connect()
     cursor = conn.cursor()
 
@@ -37,6 +65,18 @@ def get_user_invoice_summary(user_id):
 
 
 def show_financial_summary():
+    """
+    Muestra en consola un resumen financiero detallado por usuario y un resumen general.
+
+    Acciones:
+    - Recupera todos los usuarios.
+    - Por cada usuario, muestra:
+        * Nombre completo y email
+        * Total de facturas
+        * Monto total facturado
+        * Facturas pagadas y pendientes
+    - Finalmente, muestra un resumen general con totales acumulados.
+    """
     print("\n=== RESUMEN FINANCIERO ===")
 
     users = get_users()

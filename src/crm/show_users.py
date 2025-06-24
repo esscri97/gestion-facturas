@@ -1,6 +1,15 @@
 from src.crm.db import connect
 
 def show_users():
+    """
+    Muestra en consola la lista completa de usuarios registrados en la base de datos.
+
+    Acciones:
+    - Recupera todos los usuarios.
+    - Para cada usuario, muestra: ID, nombre completo, email, teléfono (o indicación si no está especificado) y fecha de registro.
+    - Al final, muestra el total de usuarios encontrados.
+    - En caso de no encontrar usuarios, muestra un mensaje informativo.
+    """
     conn = connect()
     cursor = conn.cursor()
 
