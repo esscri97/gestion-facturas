@@ -25,7 +25,7 @@ def search_user_name(nombre):
 def show_user(usuario):
     if usuario:
         print("\n--- USUARIO ENCONTRADO ---")
-        print(f"ID: USR{usuario[0]:03}")
+        print(f"ID: USR00{usuario[0]}")
         print(f"Nombre: {usuario[1]} {usuario[2]}")
         print(f"Email: {usuario[3]}")
         print(f"Teléfono: {usuario[4] if usuario[4] else 'No especificado'}")
