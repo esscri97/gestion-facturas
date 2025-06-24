@@ -3,6 +3,8 @@ from src.crm.add_user import add_user
 from src.crm.search_user import search_user_menu
 from src.crm.add_invoice import create_invoice
 from src.crm.show_users import show_users
+from src.crm.show_invoices import show_user_invoices
+
 
 def add_interactive_user():
     print("=== REGISTRO DE NUEVO USUARIO ===")
@@ -38,6 +40,8 @@ def main():
             create_invoice()
         elif opcion == "4":
             show_users()
+        elif opcion == "5":
+            show_user_invoices()
         elif opcion == "7":
             print("Saliendo del sistema.")
             break
