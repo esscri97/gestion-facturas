@@ -1,6 +1,7 @@
 from src.crm.db import start_db
 from src.crm.add_user import add_user
 from src.crm.search_user import search_user_menu
+from src.crm.add_invoice import create_invoice
 
 def add_interactive_user():
     print("=== REGISTRO DE NUEVO USUARIO ===")
@@ -32,6 +33,8 @@ def main():
             add_interactive_user()
         elif opcion == "2":
             search_user_menu()
+        elif opcion == "3":
+            create_invoice()
         elif opcion == "7":
             print("Saliendo del sistema.")
             break
