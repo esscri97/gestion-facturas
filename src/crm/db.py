@@ -2,11 +2,11 @@ import sqlite3
 
 DB_PATH = "crm.db"
 
-def conectar():
+def connect():
     return sqlite3.connect(DB_PATH)
 
-def inicializar_db():
-    conn = conectar()
+def start_db():
+    conn = connect()
     cursor = conn.cursor()
 
     cursor.execute("""

@@ -1,7 +1,7 @@
-from .db import conectar
+from .db import connect
 
 def add_user(nombre, apellidos, email, telefono=None, direccion=None):
-    conn = conectar()
+    conn = connect()
     cursor = conn.cursor()
 
     try:

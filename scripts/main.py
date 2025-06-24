@@ -1,5 +1,6 @@
-from src.crm.db import inicializar_db
+from src.crm.db import start_db
 from src.crm.add_user import add_user
+from src.crm.search_user import search_user_menu
 
 def add_interactive_user():
     print("=== REGISTRO DE NUEVO USUARIO ===")
@@ -12,7 +13,7 @@ def add_interactive_user():
     add_user(nombre, apellidos, email, telefono, direccion)
 
 def main():
-    inicializar_db()
+    start_db()
 
     while True:
         print("""
@@ -29,6 +30,8 @@ def main():
 
         if opcion == "1":
             add_interactive_user()
+        elif opcion == "2":
+            search_user_menu()
         elif opcion == "7":
             print("Saliendo del sistema.")
             break
