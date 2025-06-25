@@ -50,8 +50,11 @@ gestion-facturas/
 git clone https://github.com/esscri97/gestion-facturas.git
 cd gestion-facturas
 ```
-2. Activa el entorno virtual.
-
+2. Crea y activa el entorno virtual.
+```bash
+python -m venv gestion-facturas
+gestion-facturas\Scripts\Activate.ps1
+```
 3. Instala dependencias:
 ```bash
 pip install -r requirements.txt
