@@ -30,7 +30,7 @@ def create_invoice():
         if email == "7":
             conn.close()
             return
-        cursor.execute("SELECT id_usuario, nombre, apellidos FROM usuarios WHERE email = ?", (email,))
+        cursor.execute("SELECT id_usuario, nombre, apellidos FROM usuarios WHERE email = %s", (email,))
         usuario = cursor.fetchone()
 
         if usuario:
@@ -73,13 +73,16 @@ def create_invoice():
     try:
         cursor.execute("""
             INSERT INTO facturas (id_usuario, descripcion, monto, estado)
-            VALUES (?, ?, ?, ?)
+            VALUES (%s, %s, %s, %s)
+            RETURNING id_factura, fecha_emision
         """, (id_usuario, descripcion, monto, estado))
+        result = cursor.fetchone()
         conn.commit()
 
-        factura_id = cursor.lastrowid
-        cursor.execute("SELECT fecha_emision FROM facturas WHERE id_factura = ?", (factura_id,))
-        fecha_emision = cursor.fetchone()[0]
+        if result:
+            factura_id, fecha_emision = result
+        else:
+            factura_id, fecha_emision = "No disponible", "No disponible"
 
         print(f"""
 Factura creada exitosamente!

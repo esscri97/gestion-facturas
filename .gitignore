@@ -1,1 +1,5 @@
 gestion-facturas/*
+# Docker volumes
+postgres_data/
+*.pyc
+__pycache__/

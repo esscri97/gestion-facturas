@@ -45,7 +45,7 @@ def get_user_invoice_summary(user_id):
 
     cursor.execute("""
         SELECT monto, estado FROM facturas
-        WHERE id_usuario = ?
+        WHERE id_usuario = %s
     """, (user_id,))
     invoices = cursor.fetchall()
 

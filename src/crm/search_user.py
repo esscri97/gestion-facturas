@@ -13,7 +13,7 @@ def search_user_email(email):
     conn = connect()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM usuarios WHERE email = ?", (email,))
+    cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
     usuario = cursor.fetchone()
 
     conn.close()
@@ -33,7 +33,7 @@ def search_user_name(nombre):
     conn = connect()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM usuarios WHERE nombre LIKE ?", (f"%{nombre}%",))
+    cursor.execute("SELECT * FROM usuarios WHERE nombre LIKE %s", (f"%{nombre}%",))
     usuarios = cursor.fetchall()
 
     conn.close()

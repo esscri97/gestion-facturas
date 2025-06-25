@@ -1,4 +1,3 @@
-from src.crm.db import start_db
 from src.crm.add_user import add_user
 from src.crm.search_user import search_user_menu
 from src.crm.add_invoice import create_invoice
@@ -17,7 +16,6 @@ def add_interactive_user():
     add_user(nombre, apellidos, email, telefono, direccion)
 
 def main():
-    start_db()
 
     while True:
         print("""
