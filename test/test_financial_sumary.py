@@ -10,18 +10,18 @@ def test_get_users_and_summary():
     # Obtener ID del usuario creado
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT id_usuario FROM usuarios WHERE email = ?", (email,))
+    cursor.execute("SELECT id_usuario FROM usuarios WHERE email = %s", (email,))
     user_id = cursor.fetchone()[0]
 
     # Crear facturas
     cursor.execute("""
         INSERT INTO facturas (id_usuario, descripcion, monto, estado)
-        VALUES (?, ?, ?, ?)
+        VALUES (%s, %s, %s, %s)
     """, (user_id, "Auditoría mensual", 600, "Pagada"))
 
     cursor.execute("""
         INSERT INTO facturas (id_usuario, descripcion, monto, estado)
-        VALUES (?, ?, ?, ?)
+        VALUES (%s, %s, %s, %s)
     """, (user_id, "Asesoría legal", 400, "Pendiente"))
 
     conn.commit()

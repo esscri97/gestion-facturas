@@ -16,7 +16,7 @@ setup(
         ],
     author="David Escrivá",
     author_email="david97escriva@gmail.com",
-    description='Aplicación de consola para gestión de usuarios y facturas usando SQLite',
+    description='Herramienta CLI para administrar usuarios y facturas con base de datos PostgreSQL y soporte Docker',
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/esscri97/gestion-facturas",

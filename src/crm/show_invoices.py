@@ -19,7 +19,7 @@ def get_invoices_by_email(email):
             SELECT f.id_factura, f.fecha_emision, f.descripcion, f.monto, f.estado, u.nombre, u.apellidos
             FROM facturas f
             JOIN usuarios u ON u.id_usuario = f.id_usuario
-            WHERE u.email = ?
+            WHERE u.email = %s
             ORDER BY f.fecha_emision
         """, (email,))
 
