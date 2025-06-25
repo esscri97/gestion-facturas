@@ -2,14 +2,13 @@ from src.crm.db import connect
 
 def search_user_email(email):
     """
-    Busca un usuario en la base de datos por su email.
+    Busca un usuario por email exacto en la base de datos.
 
     Parámetros:
-    email (str): El correo electrónico del usuario a buscar.
+    - email (str): Dirección de correo electrónico del usuario a buscar.
 
     Retorna:
-    tuple o None: Una tupla con los datos del usuario si se encuentra, 
-                  o None si no existe ningún usuario con ese email.
+    - Una tupla con los datos del usuario si se encuentra, o None si no existe.
     """
     conn = connect()
     cursor = conn.cursor()
@@ -23,14 +22,13 @@ def search_user_email(email):
 
 def search_user_name(nombre):
     """
-    Busca usuarios en la base de datos cuyo nombre contenga la cadena dada.
+    Busca uno o más usuarios cuyo nombre contenga el texto dado.
 
     Parámetros:
-    nombre (str): La cadena para buscar en el nombre del usuario (búsqueda parcial).
+    - nombre (str): Texto parcial o completo del nombre a buscar.
 
     Retorna:
-    list: Una lista de tuplas con los datos de los usuarios que coincidan, 
-          o una lista vacía si no hay coincidencias.
+    - Una lista de tuplas con los usuarios encontrados (puede estar vacía).
     """
     conn = connect()
     cursor = conn.cursor()
@@ -44,10 +42,13 @@ def search_user_name(nombre):
 
 def show_user(usuario):
     """
-    Muestra por consola los datos de un usuario.
+    Muestra en consola los datos de un usuario formateados.
 
     Parámetros:
-    usuario (tuple o None): Los datos del usuario en forma de tupla, o None si no se encontró.
+    - usuario (tuple): Registro del usuario recuperado desde la base de datos.
+
+    Comportamiento:
+    - Si el usuario existe, muestra sus datos. Si no, informa que no se encontró.
     """
     if usuario:
         print("\n--- USUARIO ENCONTRADO ---")
@@ -62,6 +63,18 @@ def show_user(usuario):
 
 
 def search_user_menu():
+    """
+    Muestra un menú en consola para buscar usuarios por email o nombre.
+
+    Flujo:
+    - Permite buscar por email exacto o por nombre parcial.
+    - Muestra los datos encontrados (uno o varios usuarios).
+    - Maneja opciones no válidas.
+
+    Entrada del usuario:
+    - 1: Buscar por email.
+    - 2: Buscar por nombre.
+    """
     print("\n=== BUSCAR USUARIO ===")
     print("1. Buscar por email")
     print("2. Buscar por nombre")

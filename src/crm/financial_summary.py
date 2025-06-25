@@ -9,7 +9,7 @@ def get_users():
     - Cierra la conexión a la base de datos.
 
     Retorna:
-    - list de tuplas con la información básica de cada usuario (id_usuario, nombre, apellidos, email).
+    - lista de tuplas con la información básica de cada usuario (id_usuario, nombre, apellidos, email).
     """
     conn = connect()
     cursor = conn.cursor()
