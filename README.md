@@ -18,7 +18,7 @@ Permitir registrar usuarios, asociarles facturas y obtener reportes relevantes c
 - Pytest (para testing)
 
 ## 🗃️ Estructura del proyecto
-
+```css
 gestion-facturas/
 ├── src/
 │   └── crm/
@@ -40,7 +40,7 @@ gestion-facturas/
 ├── README.md
 ├── requirements.txt
 └── setup.py
-
+```
 
 
 ## ▶️ Cómo ejecutar el sistema
