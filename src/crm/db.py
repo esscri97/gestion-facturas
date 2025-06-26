@@ -13,5 +13,5 @@ def connect():
         return psycopg2.connect(**DB_CONFIG)
     except Exception as e:
         print("Error al conectar con la base de datos:")
-        print(repr(e))  # esto mostrará el error sin intentar decodificar
+        print(repr(e)) 
         raise
